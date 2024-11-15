@@ -1,0 +1,6 @@
+---------attempt to run a search of logged activities by type----------
+-- SELECT progress.workout_id AS Workout
+-- FROM reviews
+-- LEFT JOIN activity_type
+-- ON activity_type.workout_id = activity.id
+-- ORDER BY progress.workout_id
