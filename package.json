@@ -1,17 +1,28 @@
 {
-  "dependencies": {
-    "dotenv": "^16.4.5",
-    "express": "^4.21.1",
-    "sequelize": "^6.37.5"
-  },
   "name": "pushprogress",
   "version": "1.0.0",
   "description": "## Description",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "connect-session-sequelize": "^7.1.7",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "express-handlebars": "^5.3.4",
+    "express-session": "^1.18.1",
+    "handlebars": "^4.7.8",
+    "pg": "^8.13.1",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.5"
+  },
+  "devDependencies": {
+    "eslint": "^9.14.0",
+    "prettier": "^3.3.3"
+  }
 }
