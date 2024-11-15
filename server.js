@@ -27,19 +27,19 @@ app.use(
   })
 );
 
-// Connects to database
-const pool = new Pool(
-  {
-    // TODO: create dotenv
-    user: 'postgres',
-    password: 'Jaws2',
-    host: 'localhost',
-    database: 'progress_db',
-  },
-  console.log(`Connected to the progress_db database.`)
-);
+// // Connects to database
+// const pool = new Pool(
+//   {
+//     // TODO: create dotenv
+//     user: 'postgres',
+//     password: 'Jaws2',
+//     host: 'localhost',
+//     database: 'progress_db',
+//   },
+//   console.log(`Connected to the progress_db database.`)
+// );
 
-pool.connect();
+// pool.connect();
 
 // Log a workout
 app.post('/api/new-workout', ({ body }, res) => {
@@ -137,6 +137,7 @@ app.put('/api/review/:id', (req, res) => {
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+app.set('views', './views'); // Ensure this points to the correct folder
 
 // Middleware
 app.use(express.json());
