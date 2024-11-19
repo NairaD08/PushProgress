@@ -15,17 +15,17 @@ const PORT = process.env.PORT || 3001;
 const hbs = exphbs.create({ helpers });
 
 // Set up session with Sequelize store
-app.use(
-  session({
-    secret: process.env.SECRET,
-    cookie: {},
-    resave: false,
-    saveUninitialized: true,
-    store: new SequelizeStore({
-      db: sequelize,
-    }),
-  })
-);
+// app.use(
+//   session({
+//     secret: process.env.SECRET,
+//     cookie: {},
+//     resave: false,
+//     saveUninitialized: true,
+//     store: new SequelizeStore({
+//       db: sequelize,
+//     }),
+//   })
+// );
 
 // // Connects to database
 // const pool = new Pool(
