@@ -1,5 +1,15 @@
 const router = require('express').Router();
 
+
+router.get('/', async (req, res) => {
+  try {
+    res.render('homepage');
+  } catch(err){
+    res.status(500).json(err);
+  }
+});
+
+
 // Login page
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
@@ -7,15 +17,15 @@ router.get('/login', (req, res) => {
     res.redirect('/homepage');
     return;
   }
-
   res.render('login');
 });
 
-router.get('/', async (req, res) => {
-  try {
-    res.render('homepage');
-  } catch (err) {
-    res.status(500).json(err);
+router.get('/about', async (req, res) => {
+  try{
+    res.render('about');
+  } catch(err) {
+    res.status(400).json(err);
+
   }
 });
 
