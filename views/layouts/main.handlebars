@@ -1,32 +1,41 @@
-<!-- views/login.handlebars -->
 <html lang='en'>
+
   <head>
     <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-    <title>PushProgress - Login / Signup</title>
-    <link rel='stylesheet' href='./css/style.css' />
+    <title>PushProgress</title>
+    <link rel='stylesheet' href='/css/jass.css' />
+    <link rel='stylesheet' href='/css/style.css' />
   </head>
+
   <body>
-    <div class='auth-container'>
-      <div class='form-container'>
-        <h1 id='form-title'>Login</h1>
-        <form id='auth-form'>
-          <div class='input-group'>
-            <label for='username'>Username</label>
-            <input type='text' id='username' required />
-          </div>
-          <div class='input-group'>
-            <label for='password'>Password</label>
-            <input type='password' id='password' required />
-          </div>
-          <button type='submit' id='submit-btn'>Login</button>
-        </form>
-        <p id='switch-text'>
-          Don't have an account?
-          <a href='#' id='switch-link'>Sign Up</a>
-        </p>
-      </div>
+    <div class='flex-column justify-space-around'>
+      <header class='display-flex justify-space-between align-center p-2'>
+        <h1>
+          <span role='img' aria-label='money'>💸</span>
+          <a href='/'>PushProgress</a>
+        </h1>
+        <nav>
+          <!-- Conditionally render login or logout links -->
+          {{#if logged_in}}
+            <a href='/profile'>profile</a>
+            |
+            <button class='no-button' id='logout'>logout</button>
+          {{else}}
+            <a href='/login'>login</a>
+          {{/if}}
+        </nav>
+      </header>
+      <main class='container container-fluid mt-5'>
+        <!-- Render the sub layout -->
+        {{{body}}}
+      </main>
+      <footer>
+
+      </footer>
     </div>
-    <script src='./js/auth.js'></script>
+
+    <!-- Render script for logged in users only -->
   </body>
+
 </html>
