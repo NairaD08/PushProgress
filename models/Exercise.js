@@ -25,7 +25,7 @@ Exercise.init({
     },
 }, {
     sequelize,
-    modelName: 'Exercises',
+    modelName: 'exercises',
     freezeTableName: true,
     underscored: true,
     timestamps: false,

@@ -13,7 +13,7 @@ Progress.init({
     user_id: {
         type: DataTypes.INTEGER,
         references: {
-            model: Users,
+            model: 'user',
             key: 'user_id',
         },
         onDelete: 'CASCADE',

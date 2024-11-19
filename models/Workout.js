@@ -18,7 +18,7 @@ Workout.init({
         },
         onDelete: 'CASCADE',
     },
-    exercises: {
+    exercises_details: {
         type: DataTypes.STRING(50),
     },
     duration: {
@@ -32,7 +32,7 @@ Workout.init({
     },
 }, {
     sequelize,
-    modelName: 'Workouts',
+    modelName: 'workout',
     freezeTableName: true,
     underscored: true,
     timestamps: false,
