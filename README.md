@@ -55,4 +55,4 @@ To get started with the Fitness Goals and Workout Logger, follow these steps:
    This project is licensed under the MIT License - see the LICENSE file for details.
    ```
 
-Feel free to adjust any sections to better match your project's specifics or personal preferences!
+
