@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/main');
+    res.redirect('/homepage');
     return;
   }
   res.render('login');
@@ -25,6 +25,7 @@ router.get('/about', async (req, res) => {
     res.render('about');
   } catch(err) {
     res.status(400).json(err);
+
   }
 });
 
@@ -37,4 +38,5 @@ router.get('/thomas', (req, res) => {
   console.log('here');
   res.render('thomas');
 });
+
 module.exports = router;
