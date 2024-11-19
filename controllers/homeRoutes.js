@@ -16,4 +16,8 @@ router.get('/main', (req, res) => {
   res.render('main'); // Render main.handlebars
 });
 
+router.get('/thomas', (req, res) => {
+  console.log('here');
+  res.render('thomas');
+});
 module.exports = router;
