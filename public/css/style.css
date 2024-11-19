@@ -58,3 +58,12 @@ button:hover {
   color: #5cb85c;
   cursor: pointer;
 }
+
+/* Error message styling */
+.error-message {
+  display: none;
+  color: #d9534f;
+  font-size: 0.85rem;
+  margin-top: 5px;
+  font-weight: 500;
+}

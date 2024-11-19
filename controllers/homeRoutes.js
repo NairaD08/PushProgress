@@ -1,13 +1,19 @@
 const router = require('express').Router();
 
+// Login page
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/profile');
+    res.redirect('/main');
     return;
   }
 
   res.render('login');
+});
+
+// Main page
+router.get('/main', (req, res) => {
+  res.render('main'); // Render main.handlebars
 });
 
 module.exports = router;
