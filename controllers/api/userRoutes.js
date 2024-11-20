@@ -26,7 +26,6 @@ router.post('/login', async (req, res) => {
           'Invalid username or password. Please double-check your credentials or sign up if you’re new.',
       });
     }
-
     // Save user session
     req.session.save(() => {
       req.session.userId = userData.id;
@@ -42,5 +41,6 @@ router.post('/login', async (req, res) => {
     });
   }
 });
+
 
 module.exports = router;
