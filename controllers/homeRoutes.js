@@ -1,14 +1,12 @@
 const router = require('express').Router();
 
-
 router.get('/', async (req, res) => {
   try {
     res.render('homepage');
-  } catch(err){
+  } catch (err) {
     res.status(500).json(err);
   }
 });
-
 
 // Login page
 router.get('/login', (req, res) => {
@@ -21,11 +19,10 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/about', async (req, res) => {
-  try{
+  try {
     res.render('about');
-  } catch(err) {
+  } catch (err) {
     res.status(400).json(err);
-
   }
 });
 

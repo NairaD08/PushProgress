@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const switchLink = document.getElementById('switch-link');
   const formTitle = document.getElementById('form-title');
   const authForm = document.getElementById('auth-form');
   const submitBtn = document.getElementById('submit-btn');
@@ -50,18 +49,15 @@ document.addEventListener('DOMContentLoaded', () => {
     return ''; // No errors
   };
 
-  // Switch between Login and Sign Up forms
-  switchLink.addEventListener('click', (e) => {
-    e.preventDefault();
-
-    // Reset form data and errors
+  // Function to toggle between Login and Sign Up forms
+  const toggleForm = () => {
     resetForm();
 
     if (formTitle.textContent === 'Login') {
       formTitle.textContent = 'Sign Up';
       switchText.innerHTML = `
         Already have an account?
-        <a href="" id="switch-link">Login</a>
+        <a href="#" id="switch-link">Login</a>
       `;
       submitBtn.textContent = 'Sign Up';
     } else {
@@ -72,6 +68,18 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
       submitBtn.textContent = 'Login';
     }
+
+    // Reattach event listener to the new "switch-link"
+    document.getElementById('switch-link').addEventListener('click', (e) => {
+      e.preventDefault();
+      toggleForm();
+    });
+  };
+
+  // Attach initial switch event listener
+  document.getElementById('switch-link').addEventListener('click', (e) => {
+    e.preventDefault();
+    toggleForm();
   });
 
   // Form submission logic
