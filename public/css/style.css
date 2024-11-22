@@ -124,7 +124,7 @@ button:hover {
 }
 
 #switch-text a {
-  color: #5cb85c;
+  color: #007bff;
   cursor: pointer;
 }
 
@@ -182,3 +182,48 @@ button {
 button:hover {
   background-color: #0056b3;
 }
+
+/* Custom login button style */
+.login-btn {
+  background-color: #28a745; /* Green background */
+  color: white; /* White text */
+  border: 1px solid #218838; /* Darker green border */
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.2s ease-in-out;
+}
+
+.login-btn:hover {
+  background-color: #218838; /* Darker green on hover */
+  transform: scale(1.05); /* Slightly enlarge button on hover */
+}
+
+.login-btn:focus {
+  outline: none; /* Remove the default focus outline */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add a custom focus shadow */
+}
+
+
+/* Custom logout button style */
+.logout-btn {
+  width: 100%;
+  background-color: #d9534f; /* Red background */
+  color: white; /* White text */
+  border: 1px solid #d43f00; /* Darker border */
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.2s ease-in-out;
+}
+
+.logout-btn:hover {
+  background-color: #c9302c; /* Darker red on hover */
+  transform: scale(1.05); /* Slightly enlarge button on hover */
+}
+
+.logout-btn:focus {
+  outline: none; /* Remove the default focus outline */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add a custom focus shadow */
+}
+

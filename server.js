@@ -5,6 +5,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sequelize = require('./config/connection'); // Sequelize connection
 const routes = require('./controllers'); // Import route controllers (this already includes userRoutes)
 const helpers = require('./utils/helpers');
+const userRoutes = require('./controllers/api/userRoutes'); // Correct path to your userRoutes file
 const { Pool } = require('pg');
 
 const app = express();
@@ -37,6 +38,27 @@ app.get('/', async (req, res) => {
     const loggedIn = req.session.loggedIn || false;
     const user = loggedIn ? { username: req.session.username } : null;
     res.render('homepage', { user, loggedIn });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Ensure all routes pass `user` and `loggedIn` status
+app.get('/workouts', async (req, res) => {
+  try {
+    const loggedIn = req.session.loggedIn || false;
+    const user = loggedIn ? { username: req.session.username } : null;
+    res.render('userWorkouts', { user, loggedIn });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+app.get('/about', async (req, res) => {
+  try {
+    const loggedIn = req.session.loggedIn || false;
+    const user = loggedIn ? { username: req.session.username } : null;
+    res.render('about', { user, loggedIn });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -112,6 +134,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 // Routes for other controllers (including userRoutes)
+app.use('/api/users', userRoutes); // This maps your routes to /api/users/
 app.use(routes); // The userRoutes are already included under the controllers import
 
 // Default response for any other request (Not Found)
