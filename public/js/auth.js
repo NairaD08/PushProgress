@@ -55,17 +55,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (formTitle.textContent === 'Login') {
       formTitle.textContent = 'Sign Up';
-      switchText.innerHTML = `
-        Already have an account?
-        <a href="#" id="switch-link">Login</a>
-      `;
+      switchText.innerHTML = `Already have an account? <a href="#" id="switch-link">Login</a>`;
       submitBtn.textContent = 'Sign Up';
     } else {
       formTitle.textContent = 'Login';
-      switchText.innerHTML = `
-        Don't have an account?
-        <a href="#" id="switch-link">Sign Up</a>
-      `;
+      switchText.innerHTML = `Don't have an account? <a href="#" id="switch-link">Sign Up</a>`;
       submitBtn.textContent = 'Login';
     }
 
@@ -110,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
-          window.location.href = '/main'; // Redirect to main page
+          window.location.href = '/'; // Redirect to main page
         } else {
           const errorMessage =
             formTitle.textContent === 'Login'

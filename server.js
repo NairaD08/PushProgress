@@ -3,9 +3,8 @@ const express = require('express');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sequelize = require('./config/connection'); // Sequelize connection
-const routes = require('./controllers'); // Import route controllers
+const routes = require('./controllers'); // Import route controllers (this already includes userRoutes)
 const helpers = require('./utils/helpers');
-// Connection Pool FAQ: https://node-postgres.com/features/pooling
 const { Pool } = require('pg');
 
 const app = express();
@@ -14,52 +13,43 @@ const PORT = process.env.PORT || 3001;
 // Set up Handlebars.js engine with custom helpers
 const hbs = exphbs.create({ helpers });
 
-// Set up session with Sequelize store
+// Express session configuration
 const sess = {
-    secret: process.env.SECRET,
-    cookie: {
-      maxAge: 300000,
-      httpOnly: true,
-      secure: false,
-      sameSite: 'strict',
-    },
-    resave: false,
-    saveUninitialized: true,
-    store: new SequelizeStore({
-      db: sequelize,
-    })
+  secret: process.env.SECRET,
+  cookie: {
+    maxAge: 300000, // Adjust session expiry time if needed
+    httpOnly: true,
+    secure: false, // Set true if you're using https
+    sameSite: 'strict',
+  },
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize,
+  }),
 };
 
 app.use(session(sess));
 
-
-
-  // const sql = `INSERT INTO progress (workout_id)
-  //     VALUES ($1)`;
-  // const params = [body.workout_id];
-
-  // pool.query(sql, params, (err, result) => {
-  //   if (err) {
-  //     res.status(400).json({ error: err.message });
-  //     return;
-  //   }
-  //   res.json({
-  //     message: 'success',
-  //     data: body,
-  //   });
-  // });
-// });
-
-
+// Route for homepage
+app.get('/', async (req, res) => {
+  try {
+    const loggedIn = req.session.loggedIn || false;
+    const user = loggedIn ? { username: req.session.username } : null;
+    res.render('homepage', { user, loggedIn });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 // Delete a workout
 app.delete('/api/workout/:workout_id', (req, res) => {
   const sql = `DELETE FROM progress WHERE workout_id = $1`;
-  const params = [req.params.id];
+  const params = [req.params.workout_id]; // Fixed id reference
 
   pool.query(sql, params, (err, result) => {
     if (err) {
-      res.statusMessage(400).json({ error: err.message });
+      res.status(400).json({ error: err.message });
     } else if (!result.rowCount) {
       res.json({
         message: 'Workout not found',
@@ -68,7 +58,7 @@ app.delete('/api/workout/:workout_id', (req, res) => {
       res.json({
         message: 'deleted',
         changes: result.rowCount,
-        id: req.params.id,
+        id: req.params.workout_id,
       });
     }
   });
@@ -111,17 +101,18 @@ app.put('/api/review/:id', (req, res) => {
   });
 });
 
+// Set up Handlebars
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
-app.set('views', './views'); // Ensure this points to the correct folder
+app.set('views', './views');
 
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-// Routes
-app.use(routes);
+// Routes for other controllers (including userRoutes)
+app.use(routes); // The userRoutes are already included under the controllers import
 
 // Default response for any other request (Not Found)
 app.use((req, res) => {
