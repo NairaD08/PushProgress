@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: rgb(165, 147, 147);
+  background-color: cyan;
   align-items: center;
   height: 100vh;
   margin: 0;
@@ -13,6 +13,14 @@ body {
   border-radius: 30px;
   margin-bottom: 30px;
   }
+
+  #about-us {
+    width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    }
 
 .pic {
   display: flex;
