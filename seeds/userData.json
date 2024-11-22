@@ -1,0 +1,52 @@
+[
+    {
+        "password_hash": "Hi12345!",
+        "email": "email@1.com",
+        "first_name": "Simon",
+        "last_name": "Smith",
+        "date_of_birth": "1994-09-12",
+        "gender": "Male",
+        "height": 180.55,
+        "weight": 100
+    },
+    {
+        "password_hash": "Hi12345!",
+        "email": "email@2.com",
+        "first_name": "Emily",
+        "last_name": "Johnson",
+        "date_of_birth": "1988-03-22",
+        "gender": "Female",
+        "height": 165.30,
+        "weight": 68.5
+    },
+    {
+        "password_hash": "Hi12345!",
+        "email": "email@3.com",
+        "first_name": "Michael",
+        "last_name": "Brown",
+        "date_of_birth": "1990-07-15",
+        "gender": "Male",
+        "height": 175.50,
+        "weight": 80
+    },
+    {
+        "password_hash": "Hi12345!",
+        "email": "email@4.com",
+        "first_name": "Sophia",
+        "last_name": "Davis",
+        "date_of_birth": "1995-11-30",
+        "gender": "Female",
+        "height": 170.25,
+        "weight": 72.3
+    },
+    {
+        "password_hash": "Hi12345!",
+        "email": "email@5.com",
+        "first_name": "Liam",
+        "last_name": "Miller",
+        "date_of_birth": "1982-01-05",
+        "gender": "Male",
+        "height": 150,
+        "weight": 90
+    }
+]

@@ -15,66 +15,42 @@ const PORT = process.env.PORT || 3001;
 const hbs = exphbs.create({ helpers });
 
 // Set up session with Sequelize store
-// app.use(
-//   session({
-//     secret: process.env.SECRET,
-//     cookie: {},
-//     resave: false,
-//     saveUninitialized: true,
-//     store: new SequelizeStore({
-//       db: sequelize,
-//     }),
-//   })
-// );
+const sess = {
+    secret: process.env.SECRET,
+    cookie: {
+      maxAge: 300000,
+      httpOnly: true,
+      secure: false,
+      sameSite: 'strict',
+    },
+    resave: false,
+    saveUninitialized: true,
+    store: new SequelizeStore({
+      db: sequelize,
+    })
+};
 
-// // Connects to database
-// const pool = new Pool(
-//   {
-//     // TODO: create dotenv
-//     user: 'postgres',
-//     password: 'Jaws2',
-//     host: 'localhost',
-//     database: 'progress_db',
-//   },
-//   console.log(`Connected to the progress_db database.`)
-// );
+app.use(session(sess));
 
-// pool.connect();
 
-// Log a workout
-app.post('/api/new-workout', ({ body }, res) => {
-  const sql = `INSERT INTO progress (workout_id)
-      VALUES ($1)`;
-  const params = [body.workout_id];
 
-  pool.query(sql, params, (err, result) => {
-    if (err) {
-      res.status(400).json({ error: err.message });
-      return;
-    }
-    res.json({
-      message: 'success',
-      data: body,
-    });
-  });
-});
+  // const sql = `INSERT INTO progress (workout_id)
+  //     VALUES ($1)`;
+  // const params = [body.workout_id];
 
-// Review all workouts
-app.get('/api/workouts', (req, res) => {
-  // TODO: ensure the logic is correct here
-  //   const sql = `SELECT workout_id, activity_type AS activity FROM workouts`;
+  // pool.query(sql, params, (err, result) => {
+  //   if (err) {
+  //     res.status(400).json({ error: err.message });
+  //     return;
+  //   }
+  //   res.json({
+  //     message: 'success',
+  //     data: body,
+  //   });
+  // });
+// });
 
-  pool.query(sql, (err, { rows }) => {
-    if (err) {
-      res.status(500).json({ error: err.message });
-      return;
-    }
-    res.json({
-      message: 'success',
-      data: rows,
-    });
-  });
-});
+
 
 // Delete a workout
 app.delete('/api/workout/:workout_id', (req, res) => {
