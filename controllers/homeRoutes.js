@@ -2,20 +2,26 @@ const router = require('express').Router();
 
 router.get('/', async (req, res) => {
   try {
-    res.render('homepage');
+    // Check if the user is logged in
+    const loggedIn = req.session.loggedIn || false;
+    const user = loggedIn ? { username: req.session.username } : null;
+
+    // Render the homepage with the user context
+    res.render('homepage', { user, loggedIn });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-// Login page
+// Ensure similar logic for other routes as well
 router.get('/login', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
+  // Check if the user is logged in and redirect if so
   if (req.session.loggedIn) {
-    res.redirect('/homepage');
+    res.redirect('/');
     return;
   }
-  res.render('login');
+
+  res.render('login', { loggedIn: req.session.loggedIn || false });
 });
 
 router.get('/about', async (req, res) => {
@@ -28,12 +34,13 @@ router.get('/about', async (req, res) => {
 
 // The final route should look like this
 router.get('/workouts', async (req, res) => {
-  try{
-    if(req.session.loggedIn){
+  try {
+    if (req.session.loggedIn) {
       res.render('userWorkouts');
     } else {
       res.render('defaultWorkouts');
-    }} catch(err) {
+    }
+  } catch (err) {
     res.status(400).json(err);
   }
 });
