@@ -28,12 +28,13 @@ router.get('/about', async (req, res) => {
 
 // The final route should look like this
 router.get('/workouts', async (req, res) => {
-  try{
-    if(req.session.loggedIn){
+  try {
+    if (req.session.loggedIn) {
       res.render('userWorkouts');
     } else {
       res.render('defaultWorkouts');
-    }} catch(err) {
+    }
+  } catch (err) {
     res.status(400).json(err);
   }
 });
