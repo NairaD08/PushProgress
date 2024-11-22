@@ -1,6 +1,6 @@
 [
     {
-        "password_hash": "12345",
+        "password_hash": "Hi12345!",
         "email": "email@1.com",
         "first_name": "Simon",
         "last_name": "Smith",
@@ -10,7 +10,7 @@
         "weight": 100
     },
     {
-        "password_hash": "67890",
+        "password_hash": "Hi12345!",
         "email": "email@2.com",
         "first_name": "Emily",
         "last_name": "Johnson",
@@ -20,7 +20,7 @@
         "weight": 68.5
     },
     {
-        "password_hash": "54321",
+        "password_hash": "Hi12345!",
         "email": "email@3.com",
         "first_name": "Michael",
         "last_name": "Brown",
@@ -30,7 +30,7 @@
         "weight": 80
     },
     {
-        "password_hash": "98765",
+        "password_hash": "Hi12345!",
         "email": "email@4.com",
         "first_name": "Sophia",
         "last_name": "Davis",
@@ -40,7 +40,7 @@
         "weight": 72.3
     },
     {
-        "password_hash": "11223",
+        "password_hash": "Hi12345!",
         "email": "email@5.com",
         "first_name": "Liam",
         "last_name": "Miller",

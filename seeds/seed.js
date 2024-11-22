@@ -9,6 +9,7 @@ const seedDatabase = async () => {
 
   const users = await User.bulkCreate(userData, {
     returning: true,
+    individualHooks: true,
   });
 
   for (const workout of workoutData) {

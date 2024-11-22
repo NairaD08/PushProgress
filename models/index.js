@@ -22,4 +22,4 @@ Workout.belongsToMany(Exercise, {
   foreignKey: 'exercise_id',
 });
 
-module.exports = { Exercise, Workout, workoutExercises };
+module.exports = { Exercise, Workout, workoutExercises, User, Progress };
