@@ -4,21 +4,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (logoutBtn) {
       logoutBtn.addEventListener('click', async () => {
         try {
-          // Send a POST request to logout
+          // Send a POST request to /api/users/logout
           const response = await fetch('/api/users/logout', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
           });
   
-          // Check for the 204 No Content response before attempting to parse JSON
           if (response.ok) {
-            // After logout, redirect to homepage
-            if (response.status === 204) {
-              window.location.href = '/';
-            } else {
-              const data = await response.json();
-              console.log('Logged out:', data);
-            }
+            // If logout was successful, redirect to homepage
+            window.location.href = '/';
           } else {
             console.error('Logout failed.');
           }
