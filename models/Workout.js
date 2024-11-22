@@ -18,7 +18,7 @@ Workout.init({
         },
         onDelete: 'CASCADE',
     },
-    exercises_details: {
+    exercises_type: {
         type: DataTypes.STRING(50),
     },
     duration: {

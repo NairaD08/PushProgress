@@ -1,0 +1,38 @@
+[
+    {
+        "user_id": 1,
+        "exercises_type": "yoga",
+        "duration": 30,
+        "calories_burned": 333,
+        "date": "2024-11-19"
+    },
+    {
+        "user_id": 2,
+        "exercises_type": "running",
+        "duration": 45,
+        "calories_burned": 500,
+        "date": "2024-11-18"
+    },
+    {
+        "user_id": 3,
+        "exercises_type": "cycling",
+        "duration": 60,
+        "calories_burned": 650,
+        "date": "2024-11-17"
+    },
+    {
+        "user_id": 4,
+        "exercises_type": "weightlifting",
+        "duration": 40,
+        "calories_burned": 250,
+        "date": "2024-11-16"
+    },
+    {
+        "user_id": 5,
+        "exercises_type": "swimming",
+        "duration": 50,
+        "calories_burned": 400,
+        "date": "2024-11-15"
+    }
+    
+]
