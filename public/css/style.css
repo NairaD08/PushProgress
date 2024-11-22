@@ -105,7 +105,7 @@ ul{
 
 button {
   width: 40%;
-  background-color: #5cb85c;
+  background-color: #007bff;
   color: #fff;
   padding: 0.7em;
   border: none;
@@ -115,7 +115,7 @@ button {
 }
 
 button:hover {
-  background-color: #4cae4c;
+  background-color: #0056b3;
 }
 
 #switch-text {
@@ -135,4 +135,50 @@ button:hover {
   font-size: 0.85rem;
   margin-top: 5px;
   font-weight: 500;
+}
+
+/* Modal background */
+.modal {
+  display: none; /* Hidden by default */
+  position: absolute;
+  z-index: 1; /* Sit on top */
+  left: 50%;
+  top: 50px; /* Adjust as needed */
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* Modal content box */
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  width: 300px;
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+/* Button styles */
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #0056b3;
 }
