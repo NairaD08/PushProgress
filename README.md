@@ -8,11 +8,27 @@ PushProgress is a user-friendly application designed to help individuals log the
 
 As a fitness enthusiast, I want to set specific fitness goals and have a platform to log my workouts so that I can monitor my progress and stay accountable to my fitness journey.
 
+## Acceptance Criteria
+
+WHEN I visit the site for the first time
+THEN I am presented with the homepage, which includes public features
+WHEN I choose to sign up
+THEN I am prompted to create a username and password
+WHEN I click on the sign-up button
+THEN my user credentials are saved and I am logged into the site
+WHEN I revisit the site at a later time and choose to sign in
+THEN I am prompted to enter my username and password
+WHEN I click on the nav links
+THEN I am redirected to the correct page and see the public or private features based on my login status
+WHEN I am logged in and click on the Progress tab
+THEN I am presented with my progress history as retrieved from the database
+WHEN I click on the logout option in the navigation
+THEN I am signed out of the site
+
 ## Features
 
-- **Exercise Logging**: Easily log various types of exercises, including cardio, strength training, and flexibility workouts. Users can log individual exercises, including details such as duration, reps, and weights used.
-- **Progress Tracking**: Monitor your fitness progress over time. The app allows users to track metrics such as weight, body fat percentage, and muscle mass, providing visual representations of their journey.
-- **Goal Setting**: Set personalized fitness goals, whether it's weight loss, muscle gain, or improving endurance. The app helps users stay accountable and motivated by tracking their progress toward these goals.
+- **Exercise Logging**: Easily log various types of exercises, including cardio, strength training, and flexibility workouts.
+- **Progress Tracking**: Monitor your fitness progress over time.
 - **User-Friendly Interface**: The app features an intuitive design that makes it easy to navigate and log workouts and meals quickly.
 - **User Authentication**: Secure user accounts to ensure that workout data is private and only accessible by the user.
 
@@ -49,6 +65,8 @@ As a fitness enthusiast, I want to set specific fitness goals and have a platfor
 - **Social Connectivity**: Users can upload pictures and share profile with other users, and follow other users.
 - **Create Workout Routines**: Users can design and save customized workout routines tailored to their fitness levels and goals.
 - **Import Data from Other Apps**: Users can import data from other fitness apps.
+- **Goal Setting**: Set personalized fitness goals, whether it's weight loss, muscle gain, or improving endurance. The app helps users stay accountable and motivated by tracking their progress toward these goals.
+- **More Feachers**: Users can track metrics such as weight, body fat percentage, and muscle mass, providing visual representations of their journey.
 
 ## Installation
 
