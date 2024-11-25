@@ -45,6 +45,10 @@ router.post('/logout', (req, res) => {
       if (err) {
         return res.status(500).json({ message: 'Error during logout' });
       }
+
+      // Clear the session cookie from the client's browser
+      res.clearCookie('connect.sid'); // Default cookie name for session in express-session
+
       res.status(204).end(); // Successful logout (no content returned)
     });
   } else {

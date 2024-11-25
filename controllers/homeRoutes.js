@@ -32,37 +32,61 @@ router.get('/about', async (req, res) => {
   }
 });
 
-// The final route should look like this
 router.get('/workouts', async (req, res) => {
   try {
-    if (req.session.loggedIn) {
-      res.render('userWorkouts');
-    } else {
-      res.render('defaultWorkouts');
+    // Ensure the user is authenticated
+    if (!req.session.loggedIn || !req.session.userId) {
+      return res.status(401).json({ message: 'Unauthorized. Please log in.' });
     }
+
+    // Retrieve workouts for the logged-in user
+    const workoutData = await Workout.findAll({
+      where: {
+        user_id: req.session.userId, // Filter by user_id from the session
+      },
+      include: [
+        {
+          model: User,
+          attributes: ['first_name', 'last_name'], // Include user details
+        },
+      ],
+    });
+
+    // If no workouts found
+    if (!workoutData.length) {
+      return res.status(404).json({ message: 'No workouts found for this user.' });
+    }
+
+    // Send the workouts as JSON
+    res.status(200).json(workoutData);
   } catch (err) {
-    res.status(400).json(err);
+    console.error(err);
+    res.status(500).json({ message: 'Failed to fetch workouts.', error: err });
   }
 });
 
-// for testing sake I use the following
-// router.get('/workouts', async (req, res) => {
-//   try{
-//       // res.render('userWorkouts');
-//       res.render('defaultWorkouts');
-//     } catch(err) {
-//     res.status(400).json(err);
-//   }
-// });
+router.get('/workout/:id', async (req, res) => {
+  try {
+    const dbWorkoutData = await Workout.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['weight', 'first_name', 'last_name'],
+        },
+      ],
+    });
 
-// Main page
-// router.get('/main', (req, res) => {
-//   res.render('main'); // Render main.handlebars
-// });
+    if (!dbWorkoutData) {
+      res.status(404).json({ message: 'Workout not found' });
+      return;
+    }
 
-// router.get('/thomas', (req, res) => {
-//   console.log('here');
-//   res.render('thomas');
-// });
+    const workout = dbWorkoutData.get({ plain: true });
+    res.render('userWorkouts', { workout });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Failed to fetch workout', error: err });
+  }
+});
 
 module.exports = router;
