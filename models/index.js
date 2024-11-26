@@ -27,4 +27,13 @@ Workout.belongsToMany(Exercise, {
   foreignKey: 'exercise_id',
 });
 
+User.hasMany(Workout, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE',
+});
+
+Workout.belongsTo(User, {
+  foreignKey: 'user_id',
+});
+
 module.exports = { Exercise, Workout, workoutExercises, User, Progress };

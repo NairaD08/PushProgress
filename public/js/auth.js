@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Determine endpoint based on the form type
-    const endpoint = formTitle.textContent === 'Login' ? '/api/login' : '/api/signup';
+    const endpoint = formTitle.textContent === 'Login' ? '/api/users/login' : '/api/users/signup';
 
     fetch(endpoint, {
       method: 'POST',
