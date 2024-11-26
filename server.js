@@ -5,6 +5,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sequelize = require('./config/connection'); // Sequelize connection
 const routes = require('./controllers'); // Import route controllers (this already includes userRoutes)
 const helpers = require('./utils/helpers');
+const userRoutes = require('./controllers/api/userRoutes'); // Correct path to your userRoutes file
 const { Pool } = require('pg');
 require('dotenv').config();
 
@@ -44,6 +45,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 // Routes for other controllers (including userRoutes)
+app.use('/api/users', userRoutes); // This maps your routes to /api/users/
 app.use(routes); // The userRoutes are already included under the controllers import
 
 
