@@ -3,11 +3,6 @@ const Workout = require('./Workout');
 const User = require('./User');
 const Progress = require('./Progress');
 const workoutExercises = require('./workoutExercises');
-const sequelize = require('../config/connection');
-
-sequelize.sync({ force: true }).then(() => {
-  console.log('Database synced!');
-});
 
 Exercise.belongsToMany(Workout, {
   through: {
