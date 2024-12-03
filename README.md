@@ -50,6 +50,8 @@ THEN I am signed out of the site
 2. **Log Exercises**: Navigate to the "Workout Tracker" section to log your workouts.
 3. **Track Progress**: Use the "Progress Tracker" to input and monitor your fitness metrics.
 
+You can login using a premade account: (username: test  password:Hi12345!)
+
 ## Technologies Used
 
 - **HTML**: For the structure of the web application.
